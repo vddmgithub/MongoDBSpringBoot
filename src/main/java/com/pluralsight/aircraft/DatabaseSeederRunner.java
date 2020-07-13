@@ -55,13 +55,9 @@ public class DatabaseSeederRunner implements CommandLineRunner {
                 .build();
         // insertIndividually(f1);
         // insertIndividually(f2);
-
         bulkInsert(List.of(f1, f2));
-
         // BulkUpdates
         markAllFlightsAsDelayedForDestination("Bangalore");
-
-
     }
 
     // Bulk Updates
