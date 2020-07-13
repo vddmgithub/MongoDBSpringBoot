@@ -1,6 +1,8 @@
 package com.pluralsight.aircraft.com.aircraft;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -11,6 +13,7 @@ import java.time.LocalDate;
 
 @Data
 @Document("flights")
+@Builder
 public class FlightInformation {
     @Id
     private String id;

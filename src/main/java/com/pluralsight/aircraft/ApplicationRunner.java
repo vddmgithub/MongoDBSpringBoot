@@ -1,17 +1,14 @@
 package com.pluralsight.aircraft;
 
-import com.pluralsight.aircraft.com.aircraft.Aircraft;
 import com.pluralsight.aircraft.com.aircraft.FlightInformation;
-import com.pluralsight.aircraft.com.aircraft.FlightType;
 import com.pluralsight.aircraft.queries.FlightInformationQueries;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.util.List;
 
-import static java.lang.System.*;
+import static java.lang.System.out;
 
 @Component
 public class ApplicationRunner implements CommandLineRunner {
@@ -51,25 +48,9 @@ public class ApplicationRunner implements CommandLineRunner {
 
             out.println("Number of Flights with Aircraft model being Latest Model: "+flightInformationQueries.findFlightsWithModel("Latest Model").size());
 
-
-
         }catch (Exception ex){
             out.println("Caught exception");
             out.println(ex);
         }
-    }
-
-    private FlightInformation createFlightInformation() {
-        FlightInformation flightInformation = new FlightInformation();
-        flightInformation.setId("3");
-        flightInformation.setCreatedAt(LocalDate.now());
-        flightInformation.setDelayed(true);
-        flightInformation.setType(FlightType.Internal);
-        flightInformation.setDepartureCity("Bangalore");
-        flightInformation.setDepartureDate(LocalDate.now());
-        flightInformation.setDestinationCity("Visakhaptnam");
-        flightInformation.setDurationMin(20);
-        flightInformation.setAircraft(Aircraft.builder().model("Latest Model").nSeats(700).build());
-        return flightInformation;
     }
 }
