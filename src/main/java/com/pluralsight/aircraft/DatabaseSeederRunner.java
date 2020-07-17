@@ -11,9 +11,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
-import java.awt.datatransfer.FlavorListener;
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.List;
 
 
