@@ -3,13 +3,16 @@ package com.pluralsight.aircraft;
 import com.pluralsight.aircraft.com.aircraft.Aircraft;
 import com.pluralsight.aircraft.com.aircraft.FlightInformation;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
+@Component
+@Order(2)
 public class DatabaseSeederWithRepository implements CommandLineRunner {
 
     private FlightInformationRepository flightInformationRepository;
@@ -40,7 +43,9 @@ public class DatabaseSeederWithRepository implements CommandLineRunner {
                 .build();
 
         List<FlightInformation> flightInformationList = new ArrayList<>();
-        this.flightInformationRepository.insert(flightInformationList);
+        flightInformationList.add(f1);
+        flightInformationList.add(f2);
+        System.out.println("Inserted documents: "+this.flightInformationRepository.insert(flightInformationList).size());
 
     }
 
@@ -58,6 +63,12 @@ public class DatabaseSeederWithRepository implements CommandLineRunner {
         seed();
         sortByDepartureCity();
         printById("1");
+        findAircraftsWithMoreThanSeats(70);
+    }
+
+    private void findAircraftsWithMoreThanSeats(int i) {
+        System.out.println("Inside Custom Query Execution");
+        System.out.println(this.flightInformationRepository.findByMinAircraftsByNbSeats(i).size());
     }
 
     private void printById(String s) {

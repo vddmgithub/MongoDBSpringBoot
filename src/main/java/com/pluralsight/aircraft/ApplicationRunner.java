@@ -10,7 +10,7 @@ import java.util.List;
 
 import static java.lang.System.out;
 
-@Component
+//@Component
 public class ApplicationRunner implements CommandLineRunner {
 
     private MongoTemplate mongoTemplate;

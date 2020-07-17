@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 
-@Component
+//@Component
 @Order(1)
 public class DatabaseSeederRunner implements CommandLineRunner {
 
